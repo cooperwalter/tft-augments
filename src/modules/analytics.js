@@ -1,4 +1,9 @@
 import ReactGA from "react-ga4";
+import config from "../config";
+
+export function init() {
+  ReactGA.initialize(config.GA4_MEASUREMENT_ID);
+}
 
 export function logAugmentChoice() {
   return ReactGA.event({
