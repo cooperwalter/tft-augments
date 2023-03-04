@@ -96,6 +96,9 @@ function App() {
         <Button onClick={() => setChoices([])}>Reset</Button>
       </body>
       <footer class="App-footer">
+        <Typography variant="body1" color="inherit">
+          Patch: {config.PATCH}
+        </Typography>
         <Link href={config.REPOSITORY_URL} color="inherit" variant="body1">
           Source Code: {config.REPOSITORY_URL}
         </Link>
