@@ -97,7 +97,23 @@ function App() {
             round="4-2"
           />
         </div>
-        <Button onClick={() => setChoices([])}>Reset</Button>
+        <div
+          css={css`
+            display: flex;
+            align-self: center;
+          `}
+        >
+          <Button
+            onClick={() => setChoices([])}
+            css={css`
+              width: 0px;
+              opacity: ${choices.length > 0 ? 1 : 0};
+              transition: opacity 0.3s;
+            `}
+          >
+            Reset
+          </Button>
+        </div>
       </body>
       <footer className="App-footer">
         <Typography variant="body1" color="inherit">
