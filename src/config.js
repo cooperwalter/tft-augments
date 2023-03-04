@@ -8,6 +8,7 @@ const config = {
     gold: "#F9C74F",
     silver: "#577590",
   },
+  GA4_MEASUREMENT_ID: "G-JGSHVBTQF7",
 };
 
 export default config;
