@@ -6,6 +6,8 @@ import "./App.css";
 import { AugmentPicker, BuyMeACoffee } from "./components";
 import config from "./config";
 
+import * as analytics from "./modules/analytics";
+
 /**
  * Design
  *
@@ -34,6 +36,12 @@ function App() {
 
   const onSelect = (index, choice) => {
     setChoices([...choices.slice(0, index), choice]);
+    analytics.logAugmentChoice();
+  };
+
+  const onReset = () => {
+    setChoices([]);
+    analytics.logAugmentReset();
   };
 
   return (
@@ -104,7 +112,7 @@ function App() {
           `}
         >
           <Button
-            onClick={() => setChoices([])}
+            onClick={onReset}
             css={css`
               width: 0px;
               opacity: ${choices.length > 0 ? 1 : 0};
