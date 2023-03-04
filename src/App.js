@@ -1,9 +1,10 @@
 /** @jsxImportSource @emotion/react */ // need to add this in every file? :(
 import React from "react";
-import { Button, Typography, css } from "@mui/material";
+import { Button, Link, Typography, css } from "@mui/material";
 
 import "./App.css";
-import { AugmentPicker } from "./components";
+import { AugmentPicker, BuyMeACoffee } from "./components";
+import config from "./config";
 
 /**
  * Design
@@ -37,7 +38,22 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <div
+          css={css`
+            flex: 1;
+          `}
+        />
         <Typography variant="h4">TFT Augment Probabilities</Typography>
+        <div
+          css={css`
+            flex: 1;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+          `}
+        >
+          <BuyMeACoffee />
+        </div>
       </header>
       <body>
         <div
@@ -69,6 +85,11 @@ function App() {
         </div>
         <Button onClick={() => setChoices([])}>Reset</Button>
       </body>
+      <footer class="App-footer">
+        <Link href={config.REPOSITORY_URL} color="inherit" variant="body1">
+          Source Code: {config.REPOSITORY_URL}
+        </Link>
+      </footer>
     </div>
   );
 }
