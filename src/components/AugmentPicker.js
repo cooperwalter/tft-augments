@@ -28,8 +28,9 @@ const AugmentPicker = ({
       {...rest}
     >
       {!selectedAugment ? (
-        Object.entries(getAugmentChances(augments)).map(
-          ([type, probability]) => (
+        Object.entries(getAugmentChances(augments))
+          .filter(([_type, probability]) => probability > 0)
+          .map(([type, probability]) => (
             <AugmentCard
               key={`${type}-${probability}`}
               onClick={() => onSelect(index, type)}
@@ -39,8 +40,7 @@ const AugmentPicker = ({
                 margin-bottom: 3vh;
               `}
             />
-          )
-        )
+          ))
       ) : (
         <AugmentCard
           type={selectedAugment}
