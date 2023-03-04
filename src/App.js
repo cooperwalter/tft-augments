@@ -74,6 +74,7 @@ function App() {
             css={css`
               margin: 3vw;
             `}
+            round="2-1"
           />
           <AugmentPicker
             index={1}
@@ -83,6 +84,7 @@ function App() {
             css={css`
               margin: 3vw;
             `}
+            round="3-2"
           />
           <AugmentPicker
             index={2}
@@ -92,6 +94,7 @@ function App() {
             css={css`
               margin: 3vw;
             `}
+            round="4-2"
           />
         </div>
         <Button onClick={() => setChoices([])}>Reset</Button>
