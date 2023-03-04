@@ -96,7 +96,7 @@ function App() {
         </div>
         <Button onClick={() => setChoices([])}>Reset</Button>
       </body>
-      <footer class="App-footer">
+      <footer className="App-footer">
         <Typography variant="body1" color="inherit">
           Patch: {config.PATCH}
         </Typography>
