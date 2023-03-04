@@ -4,7 +4,7 @@ import AugmentCard from "./AugmentCard.js";
 import { getAugmentChances } from "../modules/augments/augments.js";
 
 const AugmentPicker = ({ index, augments, selectedAugment, onSelect }) => {
-  if (index > augments) {
+  if (index > augments.length) {
     return null;
   }
   return (
