@@ -1,9 +1,18 @@
 /** @jsxImportSource @emotion/react */
+import React from "react";
 import { css } from "@mui/material";
+import * as analytics from "../modules/analytics";
 
 const BuyMeACoffee = () => {
+  React.useEffect(() => {
+    const coffeeButton = document.getElementById("buy-me-a-coffee-button");
+    coffeeButton.addEventListener("click", analytics.logBuyMeACoffeeClick);
+    return () =>
+      coffeeButton.removeEventListener("click", analytics.logBuyMeACoffeeClick);
+  }, []);
   return (
     <a
+      id="buy-me-a-coffee-button"
       href="https://www.buymeacoffee.com/cooperwalter"
       target="_blank"
       rel="noreferrer"
