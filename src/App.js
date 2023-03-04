@@ -1,26 +1,74 @@
-import { getAugmentChances } from "./modules/augments/augments.js";
+/** @jsxImportSource @emotion/react */ // need to add this in every file? :(
+import React from "react";
+import { Button, Typography, css } from "@mui/material";
 
-import logo from "./logo.svg";
 import "./App.css";
+import { AugmentPicker } from "./components";
+
+/**
+ * Design
+ *
+ * When no augments are selected, show all possible augments
+ * When one augment is selected:
+ *  - show the selected augment with it original probability
+ *  - show all possible augments with their new probabilities
+ * When two augments are selected:
+ *  - show both selected augments with their original probabilities
+ *  - show the final augment types with their probabilities
+ * When all three augments are selected:
+ *  - show all three selected augments with their original probabilities
+ *  - show the probability of that three-augment combination (maybe always show this?)
+ * When one or more augments are selected, show a button to reset the selection
+ */
+
+/**
+ * TODO LIST
+ * - [] Fix the size of the AugmentCard
+ * - [] Animate changes tastefully, one piece at a time
+ */
 
 function App() {
+  const [choices, setChoices] = React.useState([]);
+
+  const onSelect = (index, choice) => {
+    setChoices([...choices.slice(0, index), choice]);
+  };
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <p>{JSON.stringify(getAugmentChances(["silver"]))}</p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <Typography variant="h4">TFT Augment Probabilities</Typography>
       </header>
+      <body>
+        <div
+          css={css`
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+          `}
+        >
+          <AugmentPicker
+            index={0}
+            augments={choices}
+            selectedAugment={choices[0]}
+            onSelect={onSelect}
+          />
+          <AugmentPicker
+            index={1}
+            augments={choices}
+            selectedAugment={choices[1]}
+            onSelect={onSelect}
+          />
+          <AugmentPicker
+            index={2}
+            augments={choices}
+            selectedAugment={choices[2]}
+            onSelect={onSelect}
+          />
+        </div>
+        <Button onClick={() => setChoices([])}>Reset</Button>
+      </body>
     </div>
   );
 }
