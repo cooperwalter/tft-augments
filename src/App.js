@@ -72,7 +72,7 @@ function App() {
             selectedAugment={choices[0]}
             onSelect={onSelect}
             css={css`
-              margin: 3vw;
+              margin: 0 3vh 3vh;
             `}
             round="2-1"
           />
@@ -82,7 +82,7 @@ function App() {
             selectedAugment={choices[1]}
             onSelect={onSelect}
             css={css`
-              margin: 3vw;
+              margin: 0 3vh 3vh;
             `}
             round="3-2"
           />
@@ -92,7 +92,7 @@ function App() {
             selectedAugment={choices[2]}
             onSelect={onSelect}
             css={css`
-              margin: 3vw;
+              margin: 0 3vh 3vh;
             `}
             round="4-2"
           />

@@ -17,8 +17,21 @@ const AugmentPicker = ({
     return null;
   }
   return (
-    <div>
-      <Typography variant="h5">{round}</Typography>
+    <div
+      css={css`
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      `}
+    >
+      <Typography
+        variant="h5"
+        css={css`
+          margin-bottom: 1.5vh;
+        `}
+      >
+        {round}
+      </Typography>
       <div
         css={css`
           display: flex;
