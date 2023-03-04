@@ -26,6 +26,7 @@ import config from "./config";
  * TODO LIST
  * - [] Fix the size of the AugmentCard
  * - [] Animate changes tastefully, one piece at a time
+ * - [] Optimize for mobile
  */
 
 function App() {
