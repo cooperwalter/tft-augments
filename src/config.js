@@ -9,6 +9,7 @@ const config = {
     silver: "#577590",
   },
   GA4_MEASUREMENT_ID: "G-JGSHVBTQF7",
+  NODE_ENV: process.env.NODE_ENV,
 };
 
 export default config;
