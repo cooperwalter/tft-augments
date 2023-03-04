@@ -106,8 +106,6 @@ export function getAugmentChances(previousAugments) {
 
 async function init() {
   augmentData = parseRawData(rawData);
-  console.log(augmentData);
-  console.log(getChanceFor(["silver"], "gold"));
 }
 
 init();
