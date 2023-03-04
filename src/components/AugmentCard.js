@@ -7,8 +7,10 @@ import {
   Typography,
   css,
 } from "@mui/material";
+import config from "../config";
 
 const AugmentCard = ({ onClick, children, type, probability, ...rest }) => {
+  const color = config.AUGMENT_COLORS[type];
   return (
     <Card {...rest}>
       <CardActionArea onClick={onClick}>
@@ -20,10 +22,25 @@ const AugmentCard = ({ onClick, children, type, probability, ...rest }) => {
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            background-color: ${color};
           `}
         >
-          <Typography>{_.upperFirst(type)}</Typography>
-          <Typography>{probability * 100}%</Typography>
+          <Typography
+            css={css`
+              color: white;
+              font-weight: bold;
+            `}
+          >
+            {_.upperFirst(type)}
+          </Typography>
+          <Typography
+            css={css`
+              color: white;
+              font-weight: bold;
+            `}
+          >
+            {probability * 100}%
+          </Typography>
         </CardContent>
       </CardActionArea>
     </Card>
