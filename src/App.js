@@ -62,6 +62,7 @@ function App() {
             flex-direction: row;
             align-items: center;
             justify-content: center;
+            flex: 1;
           `}
         >
           <AugmentPicker
@@ -69,18 +70,27 @@ function App() {
             augments={choices}
             selectedAugment={choices[0]}
             onSelect={onSelect}
+            css={css`
+              margin: 3vw;
+            `}
           />
           <AugmentPicker
             index={1}
             augments={choices}
             selectedAugment={choices[1]}
             onSelect={onSelect}
+            css={css`
+              margin: 3vw;
+            `}
           />
           <AugmentPicker
             index={2}
             augments={choices}
             selectedAugment={choices[2]}
             onSelect={onSelect}
+            css={css`
+              margin: 3vw;
+            `}
           />
         </div>
         <Button onClick={() => setChoices([])}>Reset</Button>

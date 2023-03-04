@@ -10,8 +10,8 @@ import {
 
 const AugmentCard = ({ onClick, children, type, probability, ...rest }) => {
   return (
-    <Card>
-      <CardActionArea onClick={onClick} {...rest}>
+    <Card {...rest}>
+      <CardActionArea onClick={onClick}>
         <CardContent
           css={css`
             width: 12.5vh;
