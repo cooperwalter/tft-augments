@@ -39,7 +39,7 @@ const AugmentCard = ({ onClick, children, type, probability, ...rest }) => {
               font-weight: bold;
             `}
           >
-            {probability * 100}%
+            {Math.round(probability * 100).toFixed(0)}%
           </Typography>
         </CardContent>
       </CardActionArea>
