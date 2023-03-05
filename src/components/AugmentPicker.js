@@ -1,5 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { Typography, css } from "@mui/material";
+import { motion } from "framer-motion";
 
 import AugmentCard from "./AugmentCard.js";
 import { getAugmentChances } from "../modules/augments/augments.js";
@@ -13,16 +14,19 @@ const AugmentPicker = ({
   css: cssProp,
   ...rest
 }) => {
+  augments = augments.slice(0, index);
   if (index > augments.length) {
     return null;
   }
   return (
-    <div
+    <motion.div
       css={css`
         display: flex;
         flex-direction: column;
         justify-content: center;
       `}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
     >
       <Typography
         variant="h5"
@@ -42,30 +46,22 @@ const AugmentPicker = ({
         `}
         {...rest}
       >
-        {!selectedAugment ? (
-          Object.entries(getAugmentChances(augments))
-            .filter(([_type, probability]) => probability > 0)
-            .map(([type, probability], i, list) => (
-              <AugmentCard
-                key={`${type}-${probability}`}
-                onClick={() => onSelect(index, type)}
-                type={type}
-                probability={probability}
-                css={css`
-                  margin-bottom: ${i !== list.length - 1 ? "3vh" : "0px"};
-                `}
-              />
-            ))
-        ) : (
-          <AugmentCard
-            type={selectedAugment}
-            probability={
-              getAugmentChances(augments.slice(0, index))[selectedAugment]
-            }
-          />
-        )}
+        {Object.entries(getAugmentChances(augments))
+          .filter(([_type, probability]) => probability > 0)
+          .filter(([type], i) => !selectedAugment || type === selectedAugment)
+          .map(([type, probability], i, list) => (
+            <AugmentCard
+              key={`${type}-${probability}`}
+              onClick={() => onSelect(index, type)}
+              type={type}
+              probability={probability}
+              css={css`
+                margin-bottom: ${i !== list.length - 1 ? "3vh" : "0px"};
+              `}
+            />
+          ))}
       </div>
-    </div>
+    </motion.div>
   );
 };
 

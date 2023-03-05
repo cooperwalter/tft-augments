@@ -1,5 +1,7 @@
 /** @jsxImportSource @emotion/react */ // need to add this in every file? :(
 import _ from "lodash";
+import { motion } from "framer-motion";
+
 import {
   Card,
   CardActionArea,
@@ -12,38 +14,40 @@ import config from "../config";
 const AugmentCard = ({ onClick, children, type, probability, ...rest }) => {
   const color = config.AUGMENT_COLORS[type];
   return (
-    <Card {...rest}>
-      <CardActionArea onClick={onClick}>
-        <CardContent
-          css={css`
-            width: 12.5vh;
-            height: 12.5vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background-color: ${color};
-          `}
-        >
-          <Typography
+    <motion.div layout animate={{ opacity: 1 }}>
+      <Card {...rest}>
+        <CardActionArea onClick={onClick}>
+          <CardContent
             css={css`
-              color: white;
-              font-weight: bold;
+              width: 12.5vh;
+              height: 12.5vh;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              background-color: ${color};
             `}
           >
-            {_.upperFirst(type)}
-          </Typography>
-          <Typography
-            css={css`
-              color: white;
-              font-weight: bold;
-            `}
-          >
-            {Math.round(probability * 100).toFixed(0)}%
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-    </Card>
+            <Typography
+              css={css`
+                color: white;
+                font-weight: bold;
+              `}
+            >
+              {_.upperFirst(type)}
+            </Typography>
+            <Typography
+              css={css`
+                color: white;
+                font-weight: bold;
+              `}
+            >
+              {Math.round(probability * 100).toFixed(0)}%
+            </Typography>
+          </CardContent>
+        </CardActionArea>
+      </Card>
+    </motion.div>
   );
 };
 
