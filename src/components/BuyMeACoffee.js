@@ -22,6 +22,10 @@ const BuyMeACoffee = () => {
         &:hover {
           opacity: 0.8;
         }
+        @media (max-width: 600px) {
+          height: 35px;
+          width: 120px;
+        }
       `}
     >
       <img
@@ -30,6 +34,10 @@ const BuyMeACoffee = () => {
         css={css`
           height: 45px;
           width: 150px;
+          @media (max-width: 600px) {
+            height: 35px;
+            width: 120px;
+          }
         `}
       />
     </a>

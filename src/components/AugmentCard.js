@@ -21,6 +21,8 @@ const AugmentCard = ({ onClick, children, type, probability, ...rest }) => {
             css={css`
               width: 12.5vh;
               height: 12.5vh;
+              max-height: 25vw;
+              max-width: 25vw;
               display: flex;
               flex-direction: column;
               align-items: center;

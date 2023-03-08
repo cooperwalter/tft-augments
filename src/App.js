@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */ // need to add this in every file? :(
 import React from "react";
-import { Button, Link, Typography, css } from "@mui/material";
+import { Button, Link, Typography, css, useMediaQuery } from "@mui/material";
 
 import "./App.css";
 import { AugmentPicker, BuyMeACoffee } from "./components";
@@ -33,6 +33,7 @@ import * as analytics from "./modules/analytics";
 
 function App() {
   const [choices, setChoices] = React.useState([]);
+  const isMobile = useMediaQuery("(max-width:600px)");
 
   const onSelect = (index, choice) => {
     setChoices([...choices.slice(0, index), choice]);
@@ -44,21 +45,56 @@ function App() {
     analytics.logAugmentReset();
   };
 
+  const pickerCSS = css`
+    margin: 0 3vw 3vw;
+  `;
+
   return (
     <div className="App">
-      <header className="App-header">
-        <div
+      <header
+        css={css`
+          background-color: #282c34;
+          min-height: 10vh;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: center;
+          font-size: calc(10px + 2vmin);
+          color: white;
+          padding: 0 20px;
+          @media (max-width: 600px) {
+            justify-content: space-between;
+          }
+        `}
+      >
+        {!isMobile ? (
+          <div
+            css={css`
+              flex: 1;
+            `}
+          />
+        ) : null}
+        <Typography
+          variant="h4"
           css={css`
-            flex: 1;
+            vertical-align: middle;
+            @media (max-width: 600px) {
+              font-size: 1rem;
+              ${"" /* adjust vertical alignment of title on mobile */}
+              margin-bottom: 3px;
+            }
           `}
-        />
-        <Typography variant="h4">TFT Augment Probabilities</Typography>
+        >
+          TFT Augment Probabilities
+        </Typography>
         <div
           css={css`
-            flex: 1;
-            display: flex;
-            flex-direction: row;
-            justify-content: flex-end;
+            @media (min-width: 600px) {
+              flex: 1;
+              display: flex;
+              flex-direction: row;
+              justify-content: flex-end;
+            }
           `}
         >
           <BuyMeACoffee />
@@ -79,9 +115,7 @@ function App() {
             augments={choices}
             selectedAugment={choices[0]}
             onSelect={onSelect}
-            css={css`
-              margin: 0 3vh 3vh;
-            `}
+            css={pickerCSS}
             round="2-1"
           />
           <AugmentPicker
@@ -89,9 +123,7 @@ function App() {
             augments={choices}
             selectedAugment={choices[1]}
             onSelect={onSelect}
-            css={css`
-              margin: 0 3vh 3vh;
-            `}
+            css={pickerCSS}
             round="3-2"
           />
           <AugmentPicker
@@ -99,9 +131,7 @@ function App() {
             augments={choices}
             selectedAugment={choices[2]}
             onSelect={onSelect}
-            css={css`
-              margin: 0 3vh 3vh;
-            `}
+            css={pickerCSS}
             round="4-2"
           />
         </div>
