@@ -64,6 +64,7 @@ function App() {
           padding: 0 20px;
           @media (max-width: 600px) {
             justify-content: space-between;
+            min-height: 8vh;
           }
         `}
       >
